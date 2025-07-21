@@ -34,9 +34,19 @@ type GitHubIssueContent struct {
 	Comments    []*github.IssueComment
 }
 
-// Add a method to get formatted content on demand
+// GetFormattedContent gets the issue formatted content
 func (content *GitHubIssueContent) GetFormattedContent() []string {
 	return formatIssueContent(content.Issue, content.Comments)
+}
+
+// GetLabels returns the labels of the issue as a map
+func (content *GitHubIssueContent) GetLabels() map[string]bool {
+	mainLabels := make(map[string]bool)
+	for _, label := range content.Issue.Labels {
+		mainLabels[label.GetName()] = true
+	}
+
+	return mainLabels
 }
 
 // FormatIssueContent converts a GitHubIssueContent struct into a list of readable strings

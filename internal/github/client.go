@@ -45,10 +45,9 @@ func (c *Client) GetIssueComments(owner, repo string, issue *github.Issue) ([]*g
 func (c *Client) SearchIssues(owner, repo, query string) ([]*github.Issue, error) {
 	fullQuery := fmt.Sprintf("%s repo:%s/%s is:issue is:closed", query, owner, repo)
 	opts := &github.SearchOptions{
-		Sort:  "updated",
-		Order: "desc",
 		ListOptions: github.ListOptions{
-			PerPage: 10, // Limit to top 10 relevant issues
+			// Use GitHub's default "best-match" search algorithm
+			PerPage: 20, // Limit to top 50 relevant issues
 		},
 	}
 
