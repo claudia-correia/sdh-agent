@@ -30,14 +30,17 @@ func main() {
 	// Initialize and run the agent
 	sdhAgent := agent.NewSDHAgent(*cfg)
 
-	fmt.Printf("▶️  Starting analysis for issue: #%d\n", issueNumber)
+	log.Printf("▶️  Starting analysis for issue: #%d\n", issueNumber)
 	report, err := sdhAgent.ProcessIssue(issueNumber)
 	if err != nil {
 		log.Fatalf("❌ An error occurred during processing: %v", err)
 	}
 
-	fmt.Println("✅ Successfully processed issue and generated report:")
-	fmt.Println("===== REPORT BEGIN =====")
+	log.Println("✅ Successfully processed issue and generated report:")
+	log.Println("===== REPORT BEGIN =====")
+
+	// Print the final report
 	fmt.Println(report)
-	fmt.Println("===== REPORT END =====")
+
+	log.Println("===== REPORT END =====")
 }
