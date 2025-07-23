@@ -19,7 +19,7 @@ const (
 	apiURL = "https://api.anthropic.com/v1/messages"
 	// Using the latest model available at the time of writing.
 	// This might need updating in the future.
-	model = "claude-opus-4-20250514"
+	model = "claude-3-5-haiku-latest"
 
 	// Rate limiting configurations
 	tokensPerMinute  = 19000 // Anthropic's limit is 20000 tokens per minute, we use a conservative estimate
